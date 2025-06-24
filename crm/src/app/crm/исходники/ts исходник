@@ -1,0 +1,86 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-crm',
+  standalone: false,
+  templateUrl: './crm.component.html',
+  styleUrl: './crm.component.scss'
+})
+export class CrmComponent {
+public result = history
+public history: string[] = []
+public text: string=''
+public isHidden: boolean=true
+public inputElement=document.getElementById('inpCreate') as HTMLInputElement
+public li=document.getElementById('li') as HTMLLIElement
+public dateElement = document.getElementById('taskDate') as HTMLInputElement
+public priorTask = document.getElementById('selecti') as HTMLSelectElement
+public deleteButton = document.createElement('button')
+public newZayavki = document.getElementById('NewZayavki') as HTMLButtonElement
+public select1 = document.getElementById('selecti1') as HTMLSelectElement
+public addTask(){
+
+
+this.inputElement.style.margin='0%';
+inputElement.style.paddingRight='20%';
+
+
+
+deleteButton.textContent='Удалить'
+deleteButton.id='deleter'
+deleteButton.style.marginLeft ='60%';                                        
+deleteButton.style.padding = '0.5% 1%'; 
+deleteButton.style.backgroundColor = 'rgb(195, 236, 236)';
+deleteButton.style.borderStyle= 'hidden';
+deleteButton.style.borderRadius= '5px';
+deleteButton.style.fontWeight= '500';
+
+deleteButton.addEventListener('click', () => {
+  if (newCheck.checked){
+ li.removeChild(newLi);
+      li.removeChild(newDate);
+      li.removeChild(newPrior);
+  }
+})
+this.history.push(inputElement.value) 
+inputElement.value = ' '
+  
+const newLi = document.createElement('li');
+      newLi.textContent = this.history[this.history.length - 1]; 
+
+const newCheck = document.createElement('input');
+      newCheck.type = 'checkbox';
+      newCheck.classList.add('check');
+
+const newDate =document.createElement('input')
+newDate.type = 'date'
+newDate.value = dateElement.value
+
+const newPrior = document.createElement('span')
+
+if(priorTask.value=='Выберите приоритет'){
+  newPrior.textContent=''
+} else{
+newPrior.textContent = priorTask.value
+}
+
+newZayavki.addEventListener('click', () => 
+  { 
+    li.appendChild(newPrior)
+  newLi.appendChild(newCheck);
+      li.appendChild(newLi);
+li.appendChild(newDate)
+newLi.appendChild(deleteButton)
+newLi.appendChild(select1)
+
+
+} )
+
+
+}
+
+}
+
+ 
+
+

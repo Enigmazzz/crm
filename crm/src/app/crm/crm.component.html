@@ -1,0 +1,38 @@
+<body>
+    <header>
+    <p id="log">Simple CRM</p>
+    </header>
+    <div id="all">
+         <button (click)="isHidden=true" id="NewZayavki">Новые заявки</button>
+         <button  id="ActualZayavki"> Актуальные заявки</button>
+          <button  id="CloseZayavki" >Закрыте заявки</button>
+          <button (click)="isHidden = !isHidden" id="CreateZayavki">Создать заявку</button>
+         
+          
+         <span id="tablica"></span>
+ 
+    
+    <div id="addik" *ngIf="!isHidden">
+        <input id="inpCreate" type="text">
+        <input id="taskDate" type="date">
+        <select id="selecti">
+            <option selected="selected">Выберите приоритет</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+        
+         <button (click)="addTask()" id="createZayavki">Добавить</button>
+         
+    </div>
+    <div>
+        
+<ol id="li">
+    
+</ol>
+    </div>
+    </div>
+    <footer>
+        © 2025 SimpleCRM. Все права защищены.
+    </footer>
+</body>

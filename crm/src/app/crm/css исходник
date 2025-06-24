@@ -1,0 +1,117 @@
+button {
+   
+    color: #ffffff;
+    margin: 0.3%;
+    padding: 0.5% 1%; 
+    background-color: rgb(116, 162, 214);
+    border-style: hidden;
+    border-radius: 5px;
+    font-weight: 500;
+    
+}
+input{
+  
+    margin: 0.3%;
+    padding: 0.5% 1%; 
+    background-color: rgb(195, 236, 236);
+    border-style: hidden;
+    border-radius: 5px;
+    font-weight: 500;
+}
+option{
+    margin: 0.3%;
+    padding: 0.5% 1%; 
+    background-color: rgb(195, 236, 236);
+    border-style: hidden;
+    border-radius: 5px;
+    font-weight: 500;
+}
+select{
+    margin: 0.3%;
+    padding: 0.5% 1%; 
+    background-color: rgb(195, 236, 236);
+    border-style: hidden;
+    border-radius: 5px;
+    font-weight: 500;
+}
+#addik{
+    animation: fadeIn 0.5s ease-in-out;
+}
+#li{
+
+   background-color: rgb(195, 236, 236);
+    border-style: hidden;
+    border-radius: 5px;  
+    font-weight: 500;
+    display: inline-block;
+     animation: fadeIn 0.5s ease-in-out;
+}
+li{
+
+   background-color: rgb(195, 236, 236);
+    border-style: hidden;
+    border-radius: 5px;  
+    font-weight: 500;
+    display: inline-block;
+     animation: fadeIn 0.5s ease-in-out;
+}
+body{
+   font-family: Arial, sans-serif;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+#NewZayavki{
+position: absolute;
+ top: 40%;
+  left: 37%;   /* Отступ слева */
+  z-index: 100;
+}
+
+#all {
+padding: 15%;
+font-family: Arial, sans-serif;
+margin-right: 20%;
+margin-left: 30%;
+margin-top: 10%;
+background-color: rgb(62, 66, 66);
+border-radius: 5px;
+font-weight: 500;
+}
+:host {
+  display: block;
+  background: #ffffff;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+* {
+  outline: 1px solid red;
+}
+header{
+    
+   padding-top: 3%;
+   font-family: Arial, sans-serif;
+    font-size: larger;
+    background-color: rgb(43, 46, 65);
+    color: #ffffff; 
+}
+
+footer{
+    margin-top: 10%;
+    padding-top: 0.5%;
+    padding-left: 45%;
+    background-color: rgb(107, 104, 99);
+    color: #ffffff;
+}
+
+#log{
+    display: absolute;
+    top: 100%;
+}
+
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
