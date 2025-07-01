@@ -7,27 +7,29 @@
          <button  id="ActualZayavki"> Актуальные заявки</button>
           <button  id="CloseZayavki" >Закрыте заявки</button>
           <button (click)="isHidden = !isHidden" id="CreateZayavki">Создать заявку</button>
+          <button  id="deleteList">🗑️</button>
          
           
          <span id="tablica"></span>
  
     
     <div id="addik" *ngIf="!isHidden">
-        <input id="inpCreate" type="text">
-        <input id="taskDate" type="date">
+        <input class= 'inpi'id="inpCreate" type="text" placeholder="Тема">
+        <input class= 'inpi' id="inpCreate2" type="text" placeholder="Текст">
+        <input class= 'inpi' id="taskDate" type="date">
         <select id="selecti">
             <option selected="selected">Выберите приоритет</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
+            <option>Высокий</option>
+            <option>Средний</option>
+            <option>Низкий</option>
         </select>
-        
+         
          <button (click)="addTask()" id="createZayavki">Добавить</button>
          
     </div>
     <div>
         
-<ol id="li">
+<ol  id="li">
     
 </ol>
     </div>
