@@ -1,10 +1,21 @@
 import { Component } from '@angular/core';
+
 interface Task {
   name: string;
   date: string;
   priority: string;
   status: string;
   }
+
+interface User{
+    idUser: number,
+    userName: string,
+    loginUser: string,
+    passwordUser: string
+  
+}
+
+
 @Component({
   selector: 'app-crm',
   standalone: false,
@@ -16,9 +27,76 @@ public result = history
 public history: string[] = []
 public text: string=''
 public isHidden: boolean=true
+public isHidden1: boolean=true
+public registrationHidden: boolean=true
+public exitButtonHidden: boolean=true
 public actualTasks:Task[] = []
 public currentStatus: string = 'wait';
 public taskForm = document.getElementById('addik') as HTMLDivElement
+public users: User[] = []
+public iduserInput: number = 0;
+public usernameInput: string =''
+public loginuserInput: string = ''
+public passworduserInput: string = ''
+public aginPasswordUserInput: string = ''
+public currentUser: User | null = null;
+public registerUser(){
+  
+  if(this.usernameInput == '' || this.loginuserInput == '' || this.passworduserInput == '' ){
+    alert('Заполните обязательные поля *')
+  } if(this.passworduserInput !== this.aginPasswordUserInput){
+    alert('Пароли не совпадают')
+  }else{
+
+    this.iduserInput = Math.floor(100000 + Math.random() * 900000);
+    this.users.push({idUser: this.iduserInput, userName: this.usernameInput, 
+    loginUser: this.loginuserInput, 
+    passwordUser: this.passworduserInput})
+    this.usernameInput = '' 
+    this.loginuserInput = '' 
+    this.passworduserInput = ''
+    this.aginPasswordUserInput = ''
+    localStorage.setItem('users', JSON.stringify(this.users))
+    alert('Вы успешно зарегистрированны')
+    console.log(this.users)
+  }
+
+  
+
+}
+
+public logout() {
+  this.currentUser = null;
+  this.loginuserInput = '';
+  this.passworduserInput = '';
+}
+
+public autoriseUser() {
+  if (!this.loginuserInput || !this.passworduserInput) {
+    alert('Введите логин и пароль');
+    return;
+  }
+
+  const storedUsers = localStorage.getItem('users');
+  this.users = storedUsers ? JSON.parse(storedUsers) : [];
+
+  const foundUser = this.users.find(user => user.loginUser === this.loginuserInput);
+
+  if (foundUser) {
+       if (foundUser.passwordUser === this.passworduserInput) {
+      alert(`Добро пожаловать, ${foundUser.userName}!`);
+      this.isHidden1 = true; 
+     this.currentUser = foundUser;
+    } else {
+      alert('Неверный пароль');
+    }
+  } else {
+    alert('Пользователь с таким логином не найден');
+  }
+
+  this.loginuserInput = '';
+  this.passworduserInput = '';
+}
 
 
 
@@ -185,13 +263,14 @@ newPrior.textContent = priorTask.value
 
 newZayavki.addEventListener('click', () => 
   { 
-    li.appendChild(newPrior)
+    
+     newLi.appendChild(newPrior);  
   newLi.appendChild(newCheck);
-      li.appendChild(newLi);
-li.appendChild(newDate)
-newLi.appendChild(deleteButton)
-newLi.appendChild(addChangeButton)
-newLi.appendChild(statusSelect)
+  li.appendChild(newLi);
+  li.appendChild(newDate)
+  newLi.appendChild(deleteButton)
+  newLi.appendChild(addChangeButton)
+  newLi.appendChild(statusSelect)
 
 
 } )

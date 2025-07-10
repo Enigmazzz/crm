@@ -1,6 +1,7 @@
 <body>
     <header>
-    <p id="log">Simple CRM</p>
+    <p id="log">Simple CRM {{currentUser ? '| ' + currentUser.userName : ''}}</p>
+    <button *ngIf="currentUser" (click)="logout()">Выйти</button>
     </header>
     <div id="all">
          <button (click)="isHidden=true" id="NewZayavki">Новые заявки</button>
@@ -8,12 +9,11 @@
           <button  id="CloseZayavki" >Закрыте заявки</button>
           <button (click)="isHidden = !isHidden" id="CreateZayavki">Создать заявку</button>
           <button  id="deleteList">🗑️</button>
+          <button id="voiti" (click)="isHidden1=!isHidden1" id="autorise">Войти</button>
          
-          
-         <span id="tablica"></span>
- 
+       
     
-    <div id="addik" *ngIf="!isHidden">
+    <div class="formClass" id="addik" *ngIf="!isHidden">
         <input class= 'inpi'id="inpCreate" type="text" placeholder="Тема">
         <input class= 'inpi' id="inpCreate2" type="text" placeholder="Текст">
         <input class= 'inpi' id="taskDate" type="date">
@@ -24,8 +24,20 @@
             <option>Низкий</option>
         </select>
          
-         <button (click)="addTask()" id="createZayavki">Добавить</button>
+         <button (click)="addTask()"   id="createZayavki">Добавить</button>
          
+    </div>
+    <div class="formClass" id="formAutorise" *ngIf="!isHidden1">
+        <h1 *ngIf="!registrationHidden">Форма входа</h1>
+        <h1 *ngIf="registrationHidden">Форма регистрации</h1>
+        <input class= 'inpi' placeholder="Введите логин*" [(ngModel)] = "loginuserInput">
+        <input class= 'inpi' type="password"  placeholder="Введите пароль*" [(ngModel)] = "passworduserInput">
+        <input *ngIf="registrationHidden" class= 'inpi' type="password"  placeholder="Введите пароль еще раз*" [(ngModel)] = "aginPasswordUserInput">
+         <input *ngIf="registrationHidden" class= 'inpi'  placeholder="Введите имя*" [(ngModel)] = "usernameInput">
+         <button *ngIf="registrationHidden" (click)="registrationHidden = false">Вход</button>
+         <button (click)="autoriseUser()" *ngIf="!registrationHidden" >Войти</button>
+          <button *ngIf="!registrationHidden" (click)="registrationHidden = true" >Регистрация</button>
+         <button *ngIf="registrationHidden"(click)="registerUser()">Зарегистрироваться</button>
     </div>
     <div>
         
